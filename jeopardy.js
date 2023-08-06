@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     function loadCategories() {
         $.ajax({
-            url: 'http://jservice.io/api/categories',
+            url: 'https://jservice.io/api/categories',
             data: { count: 6 }, // Load 6 categories
             success: function (data) {
                 categories = data;
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
         const categoryId = categories[currentCategoryIndex].id;
         $.ajax({
-            url: `http://jservice.io/api/clues?category=${categoryId}`,
+            url: `https://jservice.io/api/clues?category=${categoryId}`,
             success: function (data) {
                 const question = data[currentQuestionIndex];
                 $('.card-category').text(categories[currentCategoryIndex].title);
@@ -39,7 +39,7 @@ $(document).ready(function () {
     function showAnswer() {
         const categoryId = categories[currentCategoryIndex].id;
         $.ajax({
-            url: `http://jservice.io/api/clues?category=${categoryId}`,
+            url: `https://jservice.io/api/clues?category=${categoryId}`,
             success: function (data) {
                 const answer = data[currentQuestionIndex].answer;
                 $('.card-answer').text(`Answer: ${answer}`).css('color', 'red');
